@@ -59,11 +59,12 @@ const Wrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  ${"" /* //overflow: hidden; */}
+  overflow-X: hidden;
   .spline {
     position: absolute;
     right: 0;
     margin: 0;
+    transform: translate(0px, -100px) scale(1.1);
 
     @media screen and (max-width: 1024px) {
       transform: translateX(200px) scale(0.8);
@@ -79,7 +80,7 @@ const Wrapper = styled.div`
       margin-left: -300px;
     }
     @media screen and (max-width: 475px) {
-      transform: translateY(-50px) scale(0.45);
+      transform: translate(-300px, 300px) scale(0.45);
     }
   }
 `;
@@ -94,7 +95,7 @@ const Content = styled.div`
     gap: 40px;
   }
   @media screen and (max-width: 800px) {
-    gap: 40px;
+    gap: 30px;
   }
   h1 {
     font-family: "Spline Sans Mono", monospace;
