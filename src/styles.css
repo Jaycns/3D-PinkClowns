@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+}
+html,
+body,
+#root {
+  height: 100%;
+  /* background: #290e1f 290E27; */
+  background: #290e27;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  /* transition: all 0.8s; */
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(128, 128, 128);
+  border-radius: 5px;
+  background: transparent;
+  color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #f90880 0%,
+    #ef5689 33.57%,
+    #dd0683 65.86%,
+    #aa0eb2 100%
+  );
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #aa0eb2 0%,
+    #dd0683 33.57%,
+    #ef5689 65.86%,
+    #f90880 100%
+  );
+}
