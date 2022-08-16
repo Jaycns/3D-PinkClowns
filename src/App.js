@@ -5,6 +5,7 @@ import Laptop from "./images/icon-laptop.svg";
 import Twitter from "./images/icon-twitter.svg";
 import Youtube from "./images/icon-youtube.svg";
 
+const initialSideBarShow = window.matchMedia("(max-width: 500px)").matches;
 export default function App() {
   return (
     <Wrapper>
@@ -40,15 +41,27 @@ export default function App() {
           your business and control your workflow to enhance indept specifics.
           Join the private beta.
         </p>
-        <button>
-          <img src={Laptop} alt="download" />
-          Download for mac
-        </button>
+        {initialSideBarShow ? (
+          <button className="btn">
+            <img src={Laptop} alt="download" />
+            Get Started
+          </button>
+        ) : (
+          <button className="btn">
+            <img src={Laptop} alt="download" />
+            Download for mac
+          </button>
+        )}
       </Content>
       <Social>
         <img src={Twitter} alt="twitter" />
         <img src={Youtube} alt="youtube" />
       </Social>
+      <section>
+        <Footer>
+          <p>Design by Jaycn</p>
+        </Footer>
+      </section>
     </Wrapper>
   );
 }
@@ -59,12 +72,18 @@ const Wrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  overflow-X: hidden;
+  overflow: hidden;
+  @media screen and (max-width: 475px) {
+    min-height: 150vh;
+  }
+  @media screen and (max-width: 1300px) {
+    overflow-y: auto;
+  }
   .spline {
     position: absolute;
     right: 0;
     margin: 0;
-    transform: translate(0px, -100px) scale(1.1);
+    transform: translate(0px, -100px);
 
     @media screen and (max-width: 1024px) {
       transform: translateX(200px) scale(0.8);
@@ -80,7 +99,7 @@ const Wrapper = styled.div`
       margin-left: -300px;
     }
     @media screen and (max-width: 475px) {
-      transform: translate(-300px, 300px) scale(0.45);
+      transform: translate(-300px, -300px) scale(0.6);
     }
   }
 `;
@@ -91,11 +110,12 @@ const Content = styled.div`
   flex-direction: column;
   gap: 80px;
   width: 100%;
+
   @media screen and (max-width: 1024px) {
     gap: 40px;
   }
   @media screen and (max-width: 800px) {
-    gap: 30px;
+    gap: 40px;
   }
   h1 {
     font-family: "Spline Sans Mono", monospace;
@@ -112,7 +132,7 @@ const Content = styled.div`
       max-width: 300px;
     }
     @media (max-width: 800px) {
-      padding-top: 250px;
+      padding-top: 400px;
     }
   }
   p {
@@ -128,6 +148,9 @@ const Content = styled.div`
       margin: 0 30px;
     }
   }
+  .btn {
+    margin-bottom: 30px;
+  }
   button {
     background: rgba(0, 0, 0, 0.2);
     border: 0px;
@@ -138,7 +161,6 @@ const Content = styled.div`
     max-width: 280px;
     backdrop-filter: blur(20px);
     border-radius: 14px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -165,6 +187,11 @@ const Nav = styled.ul`
     li:nth-child(3),
     li:nth-child(4),
     li:nth-child(5) {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    button {
       display: none;
     }
   }
@@ -209,4 +236,13 @@ const Social = styled.div`
   @media screen and (max-width: 1024px) {
     display: none;
   }
+`;
+const Footer = styled.footer`
+  text-align: center;
+  opacity: 0.5;
+  font-size: 18px;
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  font-weight: 300;
 `;
